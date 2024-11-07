@@ -1,5 +1,6 @@
 package com.glue;
 import com.utils.TestUtil;
+import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,7 +31,8 @@ public class BrowserTest {
     @Then("^I should see qTest Launch item on the Search Result page$")
     public void checkSearchResult() {
         final WebElement qTestLaunchBoxElement = driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/div[2]/div/article[5]/a]"));
-        new WebDriverWait(driver,10L).until(new ExpectedCondition<Boolean>() {
+        Duration d = Duration.ofSeconds(10);
+        new WebDriverWait(driver, d).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return qTestLaunchBoxElement.isDisplayed();
             }
